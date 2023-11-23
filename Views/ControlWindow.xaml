@@ -1,0 +1,26 @@
+﻿<Window x:Class="DeviationModule.Views.ControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeviationModule.Views"
+        mc:Ignorable="d"
+        Title="ControlWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <GroupBox>
+                <StackPanel>
+                    <Button></Button>
+                    <Button></Button>
+                    <Button></Button>
+                    <Button></Button>
+                    <Button></Button>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="129,287,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <GridSplitter></GridSplitter>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+    </Grid>
+</Window>
