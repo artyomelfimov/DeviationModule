@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DeviationModule.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace WpfApp1;
+namespace DeviationModule.Infrastructure;
 
 public partial class TestDbContext : DbContext
 {

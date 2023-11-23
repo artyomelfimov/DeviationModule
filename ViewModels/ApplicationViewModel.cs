@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using DeviationModule.Infrastructure;
 using DeviationModule.Models;
 using WpfApp1.Commands;
 

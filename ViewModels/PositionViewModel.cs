@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using DeviationModule.Infrastructure;
 using DeviationModule.Models;
 using WpfApp1.Commands;
 
