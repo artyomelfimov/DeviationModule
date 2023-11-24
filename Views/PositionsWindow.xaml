@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="PositionsWindow" Height="450" Width="800" WindowState="Maximized">
+        Title="PositionsWindow" Height="540" Width="960" WindowState="Maximized">
     <Grid>
-        <DataGrid ItemsSource="{Binding Deviations}" HorizontalAlignment="Left" AutoGenerateColumns="True"/>
+        <DataGrid ItemsSource="{Binding Deviations}" HorizontalAlignment="Left"/>
 
     </Grid>
 </Window>

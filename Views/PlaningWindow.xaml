@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeviationModule.Views"
         mc:Ignorable="d"
-        Title="PlaningWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Модуль планирования" Height="540" Width="960">
+    <DockPanel>
+        <StatusBar Height="30" DockPanel.Dock="Bottom"></StatusBar>
+        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+            <ToggleButton x:Name="DatesButton">Все/по дате</ToggleButton>
+            <Calendar x:Name="LaunchCalendar"></Calendar>
+            <ToggleButton>Все/по номеру</ToggleButton>
+            <TextBlock Text="Введите номер КП"></TextBlock>
+            <Button>Фильтровать</Button>
+        </StackPanel>
+        <StackPanel  Orientation="Vertical">
+            <DataGrid MinHeight="450" MinWidth="700">
+                <DataGrid.Columns>
+                    <DataGridTextColumn></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal">
+                <Button>Добавить</Button>
+                <Button>Удалить</Button>
+                <Button>Копировать</Button>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:vm="clr-namespace:WpfApp1.ViewModel"
         mc:Ignorable="d"
-        Title="Модуль отклонений" Height="1080" Width="1920" Background="#FFFFFFF8" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="Модуль отклонений" Height="540" Width="960" Background="#FFFFFFF8" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:ApplicationViewModel/>
     </Window.DataContext>
@@ -18,14 +18,6 @@
             <MenuItem Header="Справка"></MenuItem>
         </Menu>
         <StackPanel>
-         
-            <Button  x:Name="OpenFiltes" Content="Фильтрация"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-0.2,10,0,10" Height="30" Width="100" FontFamily="Tele2 DisplaySerif" Background="#FFDBD7F3">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
             <TabControl x:Name="TabCont" Background="#FFFFFFF8">
                 <TabItem Header="Текущие" Width="100">
                     <DockPanel>
