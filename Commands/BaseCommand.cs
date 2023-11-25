@@ -5,7 +5,11 @@ namespace WpfApp1.Commands
 {
     abstract class BaseCommand : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged
+        {
+            add{ CommandManager.RequerySuggested += value; }
+            remove{ CommandManager.RequerySuggested -= value; }
+        }
 
         public abstract bool CanExecute(object? parameter);
 

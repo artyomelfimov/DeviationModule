@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace DeviationModule.Models
@@ -24,9 +25,11 @@ namespace DeviationModule.Models
             set
             {
                 comment = value;
-                OnPropertyChanged("comment");
+                OnPropertyChanged();
             }
         }
+        public string? BarCode { get; set; }
+        public DateTime? Date { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

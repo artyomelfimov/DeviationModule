@@ -25,7 +25,7 @@ public class Procedure : INotifyPropertyChanged
         set
         {
             owner = value;
-            OnPropertyChanged("Owner");
+            OnPropertyChanged();
         }
     }
 

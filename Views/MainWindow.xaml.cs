@@ -7,6 +7,7 @@ using System.Windows.Input;
 using DeviationModule.Models;
 using WpfApp1.Commands;
 using WpfApp1.ViewModel;
+using System.Windows.Data;
 
 namespace WpfApp1
 {
