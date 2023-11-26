@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using DeviationModule.Infrastructure;
 using DeviationModule.Models;
+using DeviationModule.ViewModels;
 using WpfApp1.Commands;
 
 namespace WpfApp1.ViewModel
 {
-    internal class PositionViewModel
+    internal class PositionViewModel : ViewModelBase
     {
         public ObservableCollection<Deviation> Deviations  { get; set; }
         public PositionViewModel(ApplicationViewModel ParentViewModel)

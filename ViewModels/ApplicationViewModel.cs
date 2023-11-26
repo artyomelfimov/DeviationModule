@@ -5,13 +5,14 @@ using System.Windows;
 using System.Windows.Input;
 using DeviationModule.Infrastructure;
 using DeviationModule.Models;
+using DeviationModule.ViewModels;
 using WpfApp1.Commands;
 
 namespace WpfApp1.ViewModel
 {
-    public class ApplicationViewModel
+    public class ApplicationViewModel : ViewModelBase
     {
-        public ICommand OpenCommand {  get; set; }
+        public ICommand OpenCommand { get; set; }
         public List<Procedure>? Procedures { get; set; }
         public Procedure? SelectedItem { get; set; }
         public ApplicationViewModel()
