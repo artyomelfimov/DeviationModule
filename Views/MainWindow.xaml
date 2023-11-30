@@ -10,18 +10,7 @@
     <Window.DataContext>
         <vm:ApplicationViewModel/>
     </Window.DataContext>
-    
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Выйти" Command="{Binding OpenCommand}"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Справка"></MenuItem>
-        </Menu>
-        <StackPanel>
-            <TabControl x:Name="TabCont" Background="#FFFFFFF8">
-                <TabItem Header="Текущие" Width="100">
-                    <DockPanel>
                         <DataGrid x:Name="PosListGrid" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="16" MaxHeight="700" CanUserAddRows="False" ItemsSource="{Binding Procedures}"  Margin="10,10,10,10" Background="#FFFFFFF8" HorizontalAlignment="Left">
                             <DataGrid.InputBindings>
                                 <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding OpenCommand}"></MouseBinding>
@@ -34,31 +23,17 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Владелец" Binding="{Binding Owner}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Статус" Binding="{Binding Status}"></DataGridTextColumn>
-                                <DataGridTemplateColumn Header="Позиции" CellTemplate="{StaticResource ResourceKey=OpenButton}">
+                                
+                                <!--<DataGridTemplateColumn Header="Позиции" CellTemplate="{StaticResource ResourceKey=OpenButton}">
                             
-                                </DataGridTemplateColumn>
+                                </DataGridTemplateColumn>-->
                             </DataGrid.Columns>
                         </DataGrid>
                         <GroupBox Header="{Binding SelectedItem.Name}">
-                            <ListBox>
-                                <ListBoxItem></ListBoxItem>
-                            </ListBox>
+                            <ContentControl>
+                                
+                            </ContentControl>
                         </GroupBox>
                     </DockPanel>
-                    
-                </TabItem>
-                <TabItem Header="История" Width="100">
-                    <DockPanel>
-                        <DataGrid x:Name="HistoryList" DockPanel.Dock="Left" MaxHeight="700" Margin="10" HorizontalAlignment="Left"/>
-                        <GroupBox Header="{Binding Source=SelectedItem,Path=Name}">
-                            <ListBox></ListBox>
-                        </GroupBox>
-                    </DockPanel>
-                </TabItem>
-            </TabControl>
-        </StackPanel>
-    </DockPanel>
 
 </Window>

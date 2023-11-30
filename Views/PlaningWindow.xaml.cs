@@ -17,7 +17,7 @@ namespace DeviationModule.Views
     /// <summary>
     /// Логика взаимодействия для PlaningWindow.xaml
     /// </summary>
-    public partial class PlaningWindow : Window
+    public partial class PlaningWindow : UserControl
     {
         public PlaningWindow()
         {

@@ -1,33 +1,27 @@
-﻿<Window x:Class="DeviationModule.Views.PlaningWindow"
+﻿<UserControl x:Class="DeviationModule.Views.PlaningWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeviationModule.Views" 
         xmlns:models="clr-namespace:DeviationModule.Models" 
-        d:DataContext="{d:DesignInstance Type=models:Launch}"
         mc:Ignorable="d"
-        Title="Модуль планирования" Height="540" Width="960">
-    <DockPanel>
+        Height="540" Width="960">
+    <DockPanel Background="Aqua">
         <StatusBar Height="30" DockPanel.Dock="Bottom"></StatusBar>
-        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+        <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
             <ToggleButton x:Name="DatesButton">Все/по дате</ToggleButton>
             <Calendar x:Name="LaunchCalendar"></Calendar>
-            <ToggleButton>Все/по номеру</ToggleButton>
-            <TextBlock Text="Введите номер КП"></TextBlock>
-            <Button>Фильтровать</Button>
+            <Button>Добавить</Button>
+            <Button>Удалить</Button>
+            <Button>Копировать</Button>
         </StackPanel>
+            
         <StackPanel  Orientation="Vertical">
             <DataGrid MinHeight="450" MinWidth="700">
                 <DataGrid.Columns>
-                    <DataGridTextColumn></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal">
-                <Button>Добавить</Button>
-                <Button>Удалить</Button>
-                <Button>Копировать</Button>
-            </StackPanel>
         </StackPanel>
     </DockPanel>
-</Window>
+</UserControl>

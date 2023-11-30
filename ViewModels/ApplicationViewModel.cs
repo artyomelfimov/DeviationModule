@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 using DeviationModule.Infrastructure;
 using DeviationModule.Models;
@@ -13,8 +11,18 @@ namespace WpfApp1.ViewModel
     public class ApplicationViewModel : ViewModelBase
     {
         public ICommand OpenCommand { get; set; }
+
+
         public List<Procedure>? Procedures { get; set; }
-        public Procedure? SelectedItem { get; set; }
+        private Procedure? selectedItem;
+        public Procedure? SelectedItem 
+        {
+            get => selectedItem;
+            set { selectedItem = value;
+                OnPropertyChanged();
+                }
+        }
+
         public ApplicationViewModel()
         {
             using TestDbContext db = new();

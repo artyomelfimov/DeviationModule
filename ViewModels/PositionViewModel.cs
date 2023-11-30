@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using DeviationModule.Infrastructure;
 using DeviationModule.Models;
 using DeviationModule.ViewModels;
-using WpfApp1.Commands;
 
 namespace WpfApp1.ViewModel
 {

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DeviationModule.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ControlListWindow.xaml
+    /// Логика взаимодействия для EditorView.xaml
     /// </summary>
-    public partial class ControlListWindow : Window
+    public partial class EditorView : UserControl
     {
-        public ControlListWindow()
+        public EditorView()
         {
             InitializeComponent();
         }

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DeviationModule.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ControlWindow.xaml
+    /// Логика взаимодействия для PositionsView.xaml
     /// </summary>
-    public partial class ControlWindow : Window
+    public partial class PositionsView : UserControl
     {
-        public ControlWindow()
+        public PositionsView()
         {
             InitializeComponent();
         }
