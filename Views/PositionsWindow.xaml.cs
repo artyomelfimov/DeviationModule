@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using WpfApp1.ViewModel;
+using DeviationModule.ViewModel;
 
-namespace WpfApp1
+namespace DeviationModule
 {
     /// <summary>
     /// Логика взаимодействия для PositionsWindow.xaml
@@ -12,10 +12,10 @@ namespace WpfApp1
         /// 
         /// </summary>
         /// <param name="ParentProcedureId"></param>
-        public PositionsWindow(ApplicationViewModel ParentViewModel)
+        public PositionsWindow()
         {
             InitializeComponent();
-            DataContext = new PositionViewModel(ParentViewModel);
+            DataContext = new PositionViewModel();
         }
     }
 }

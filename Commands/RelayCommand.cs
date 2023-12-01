@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WpfApp1.Commands
+namespace DeviationModule.Commands
 {
     internal class RelayCommand : BaseCommand
     {

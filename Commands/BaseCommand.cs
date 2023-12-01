@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WpfApp1.Commands
+namespace DeviationModule.Commands
 {
     abstract class BaseCommand : ICommand
     {

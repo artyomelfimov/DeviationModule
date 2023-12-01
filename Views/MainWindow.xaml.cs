@@ -5,11 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using DeviationModule.Models;
-using WpfApp1.Commands;
-using WpfApp1.ViewModel;
+using DeviationModule.Commands;
+using DeviationModule.ViewModel;
 using System.Windows.Data;
 
-namespace WpfApp1
+namespace DeviationModule
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

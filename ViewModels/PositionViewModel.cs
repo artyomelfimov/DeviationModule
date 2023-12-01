@@ -4,15 +4,15 @@ using DeviationModule.Infrastructure;
 using DeviationModule.Models;
 using DeviationModule.ViewModels;
 
-namespace WpfApp1.ViewModel
+namespace DeviationModule.ViewModel
 {
     internal class PositionViewModel : ViewModelBase
     {
         public ObservableCollection<Deviation> Deviations  { get; set; }
-        public PositionViewModel(ApplicationViewModel ParentViewModel)
+        public PositionViewModel()
         {
             using TestDbContext db = new();
-            Deviations = new ObservableCollection<Deviation>(db.Positions.ToList().Where(x => x.ProcId == ParentViewModel.SelectedItem?.Id));
+            Deviations = new ObservableCollection<Deviation>(db.Positions.ToList());
             // получаем объекты из бд и выводим на консоль
             //Deviations = db.Positions.ToList();
         }
