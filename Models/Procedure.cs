@@ -7,7 +7,8 @@ namespace DeviationModule.Models;
 
 public class Procedure : INotifyPropertyChanged
 {
-    public ObservableCollection<Deviation>? Deviations { get; set; }
+    public ObservableCollection<Deviation>? Deviations { get; set; } = new();
+    public ObservableCollection<Launch>? Launches { get; set; } = new();
     private string? owner;
     private string? name;
     private string? description;

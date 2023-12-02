@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DeviationModule.ViewModels
+namespace DeviationModule.ViewModel
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

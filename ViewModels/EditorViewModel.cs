@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeviationModule.ViewModel
 {
-    class PlaningViewModel : ViewModelBase
+    internal class EditorViewModel : ViewModelBase
     {
     }
 }

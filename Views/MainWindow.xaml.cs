@@ -1,13 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using DeviationModule.Models;
-using DeviationModule.Commands;
-using DeviationModule.ViewModel;
-using System.Windows.Data;
+﻿using System.Windows;
 
 namespace DeviationModule
 {

@@ -30,9 +30,16 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <GroupBox Header="{Binding SelectedItem.Name}">
-                            <ContentControl>
-                                <ContentPresenter Content="{Binding CurrentView}"></ContentPresenter>
-                            </ContentControl>
+                            <StackPanel>
+                                <Menu>
+                                    <MenuItem Header="Контроль" Command=""></MenuItem>
+                    <MenuItem Header="Запуски" Command=""></MenuItem>
+                    <MenuItem Header="Позиции" Command="{Binding PositionCommand}"></MenuItem>
+                </Menu>
+                                <ContentControl Content="{Binding CurrentView}">
+                                </ContentControl>
+                            </StackPanel>
+                            
                         </GroupBox>
                     </DockPanel>
 

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace DeviationModule.Models
 {
-    class Launch : INotifyPropertyChanged
+    public class Launch : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -12,8 +12,8 @@ namespace DeviationModule.Models
         public int Id { get; set; }
 
         private string? consumer;
-
-
+        public int? ProcedureId { get; set; }
+        public Procedure? Procedure { get; set; }
         public string? Consumer
         {
             get => consumer; set {consumer = value; OnPropertyChanged(); }

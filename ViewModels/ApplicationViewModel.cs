@@ -3,17 +3,22 @@ using System.Linq;
 using System.Windows.Input;
 using DeviationModule.Infrastructure;
 using DeviationModule.Models;
-using DeviationModule.ViewModels;
+using DeviationModule.ViewModel;
 using DeviationModule.Commands;
+using Microsoft.EntityFrameworkCore;
+using DeviationModule.Views;
 
 namespace DeviationModule.ViewModel
 {
     public class ApplicationViewModel : ViewModelBase
     {
-        public ICommand OpenCommand { get; set; }
+        public ICommand PositionCommand { get; set; }
+        public ICommand LaunchCommand { get; set; }
+        public ICommand EditorCommand { get; set; }
+
         private object? currentView;
 
-        public object CurrentView
+        public object? CurrentView
         {
             get => currentView;
             set
@@ -35,17 +40,20 @@ namespace DeviationModule.ViewModel
         public ApplicationViewModel()
         {
             using TestDbContext db = new();
-            CurrentView = new PositionViewModel();
+            CurrentView = new();
             // получаем объекты из бд и выводим на консоль
-            Procedures = db.Procedures.ToList();
-            OpenCommand = new RelayCommand(IsExitCommandExecuted, CanExitCommandExecute);
+            Procedures = db.Procedures.Include(u => u.Deviations).ToList();
+            PositionCommand = new RelayCommand(IsPositionCommandExecuted, CanCommandExecute);
+            LaunchCommand = new RelayCommand(IsLaunchCommandExecuted, CanCommandExecute);
+            EditorCommand = new RelayCommand(IsEditorCommandExecuted, CanCommandExecute);
+
         }
-        private bool CanExitCommandExecute(object p) => SelectedItem != null;
-        private void IsExitCommandExecuted(object p)
-        {
-            PositionsWindow positionsWindow = new();
-            positionsWindow.Show();
-        }
+        
+        private bool CanCommandExecute(object p) => SelectedItem != null;
+
+        private void IsPositionCommandExecuted(object p) => CurrentView = new PositionViewModel(this);
+        private void IsLaunchCommandExecuted(object p) => CurrentView = new PlaningViewModel();
+        private void IsEditorCommandExecuted(object p) => CurrentView = new EditorViewModel();
 
     }
 }

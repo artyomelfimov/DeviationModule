@@ -6,13 +6,13 @@
              xmlns:view="clr-namespace:DeviationModule.Views"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        <DataTemplate DataType="vm:PositionViewModel">
+        <DataTemplate DataType="{x:Type vm:PositionViewModel}">
             <view:PositionsView></view:PositionsView>
         </DataTemplate>
-        <DataTemplate DataType="vm:PlaningViewModel">
+        <DataTemplate DataType="{x:Type vm:PlaningViewModel}">
             <view:PlaningView></view:PlaningView>
         </DataTemplate>
-        <DataTemplate DataType="vm:ApplicationViewModel">
+        <DataTemplate DataType="{x:Type vm:ApplicationViewModel}">
             <view:EditorView></view:EditorView>
         </DataTemplate>
     </Application.Resources>
