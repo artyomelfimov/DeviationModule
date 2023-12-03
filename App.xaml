@@ -12,7 +12,7 @@
         <DataTemplate DataType="{x:Type vm:PlaningViewModel}">
             <view:PlaningView></view:PlaningView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ApplicationViewModel}">
+        <DataTemplate DataType="{x:Type vm:EditorViewModel}">
             <view:EditorView></view:EditorView>
         </DataTemplate>
     </Application.Resources>

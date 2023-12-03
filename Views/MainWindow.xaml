@@ -12,15 +12,7 @@
     </Window.DataContext>
     <DockPanel>
                         <DataGrid x:Name="PosListGrid" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" IsReadOnly="True" FontSize="16" MaxHeight="700" CanUserAddRows="False" ItemsSource="{Binding Procedures}"  Margin="10,10,10,10" Background="#FFFFFFF8" HorizontalAlignment="Left">
-                            <DataGrid.InputBindings>
-                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding OpenCommand}"></MouseBinding>
-                            </DataGrid.InputBindings>
-                            <DataGrid.Resources>
-                                <DataTemplate x:Key="OpenButton">
-                                    <Button Content="Click Me" Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" />
-                                </DataTemplate>
-                            </DataGrid.Resources>
-                            <DataGrid.Columns>
+                              <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
                                 
@@ -32,8 +24,8 @@
                         <GroupBox Header="{Binding SelectedItem.Name}">
                             <StackPanel>
                                 <Menu>
-                                    <MenuItem Header="Контроль" Command=""></MenuItem>
-                    <MenuItem Header="Запуски" Command=""></MenuItem>
+                                    <MenuItem Header="Контроль" Command="{Binding EditorCommand}"></MenuItem>
+                    <MenuItem Header="Запуски" Command="{Binding LaunchCommand}"></MenuItem>
                     <MenuItem Header="Позиции" Command="{Binding PositionCommand}"></MenuItem>
                 </Menu>
                                 <ContentControl Content="{Binding CurrentView}">

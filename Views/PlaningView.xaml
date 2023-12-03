@@ -18,7 +18,7 @@
         </StackPanel>
             
         <StackPanel  Orientation="Vertical">
-            <DataGrid MinHeight="450" MinWidth="700">
+            <DataGrid ItemsSource="{Binding Launches}" MinHeight="450" MinWidth="700">
                 <DataGrid.Columns>
                 </DataGrid.Columns>
             </DataGrid>

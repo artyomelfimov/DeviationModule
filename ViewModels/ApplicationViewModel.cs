@@ -42,7 +42,7 @@ namespace DeviationModule.ViewModel
             using TestDbContext db = new();
             CurrentView = new();
             // получаем объекты из бд и выводим на консоль
-            Procedures = db.Procedures.Include(u => u.Deviations).ToList();
+            Procedures = db.Procedures.Include(u => u.Deviations).Include(u => u.Launches).ToList();
             PositionCommand = new RelayCommand(IsPositionCommandExecuted, CanCommandExecute);
             LaunchCommand = new RelayCommand(IsLaunchCommandExecuted, CanCommandExecute);
             EditorCommand = new RelayCommand(IsEditorCommandExecuted, CanCommandExecute);
@@ -52,8 +52,8 @@ namespace DeviationModule.ViewModel
         private bool CanCommandExecute(object p) => SelectedItem != null;
 
         private void IsPositionCommandExecuted(object p) => CurrentView = new PositionViewModel(this);
-        private void IsLaunchCommandExecuted(object p) => CurrentView = new PlaningViewModel();
-        private void IsEditorCommandExecuted(object p) => CurrentView = new EditorViewModel();
+        private void IsLaunchCommandExecuted(object p) => CurrentView = new PlaningViewModel(this);
+        private void IsEditorCommandExecuted(object p) => CurrentView = new EditorViewModel(this);
 
     }
 }

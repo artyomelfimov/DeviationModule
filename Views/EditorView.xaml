@@ -7,6 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Coral">
-        <ListBox></ListBox>   
+        <ListView ItemsSource="{Binding CurrentItem}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Owner}">Владелец</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}">Описание</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>   
     </Grid>
 </UserControl>
