@@ -1,0 +1,33 @@
+﻿<ResourceDictionary
+    x:Class="DeviationModule.Components.FilteredDataGridDictionary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:control="clr-namespace:DeviationModule.Components">
+    <DataTemplate x:Key="ColTemp">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding}">
+            </TextBlock>
+            <Button  DockPanel.Dock="Right" Command="{x:Static control:FilteredDataGrid.OpenFilterCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridColumnHeader}}}" HorizontalAlignment="Right" Background="AliceBlue" Margin="5,0,0,0" Height="14" Width="14">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Popup Width="200" Height="200" Placement="Mouse">
+                <StackPanel>
+                    <TextBox Text="Ass"></TextBox>
+                    <ListBox>
+                        <ListBoxItem>Shit</ListBoxItem>
+                        <ListBoxItem>Fuck</ListBoxItem>
+                    </ListBox>
+                    <StackPanel>
+                        <Button></Button>
+                        <Button></Button>
+                    </StackPanel>
+                </StackPanel>
+            </Popup>
+        </DockPanel>
+    </DataTemplate>
+    <Style BasedOn="{StaticResource {x:Type DataGrid}}" TargetType="control:FilteredDataGrid"/>
+</ResourceDictionary>
