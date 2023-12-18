@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeviationModule.ViewModel
+namespace DeviationModule.ViewModels
 {
     class PlaningViewModel : ViewModelBase
     {

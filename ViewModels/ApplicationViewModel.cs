@@ -3,12 +3,12 @@ using System.Linq;
 using System.Windows.Input;
 using DeviationModule.Infrastructure;
 using DeviationModule.Models;
-using DeviationModule.ViewModel;
 using DeviationModule.Commands;
 using Microsoft.EntityFrameworkCore;
 using DeviationModule.Views;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace DeviationModule.ViewModel
+namespace DeviationModule.ViewModels
 {
     public class ApplicationViewModel : ViewModelBase
     {
@@ -51,9 +51,9 @@ namespace DeviationModule.ViewModel
         
         private bool CanCommandExecute(object p) => SelectedItem != null;
 
-        private void IsPositionCommandExecuted(object p) => CurrentView = new PositionViewModel(this);
-        private void IsLaunchCommandExecuted(object p) => CurrentView = new PlaningViewModel(this);
-        private void IsEditorCommandExecuted(object p) => CurrentView = new EditorViewModel(this);
+        private void IsPositionCommandExecuted(object p) => CurrentView = App.Host.Services.GetRequiredService<PositionViewModel>();
+        private void IsLaunchCommandExecuted(object p) => CurrentView = App.Host.Services.GetRequiredService<PlaningViewModel>();
+        private void IsEditorCommandExecuted(object p) => CurrentView = App.Host.Services.GetRequiredService<EditorViewModel>();
 
     }
 }

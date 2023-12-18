@@ -6,13 +6,17 @@
              xmlns:local="clr-namespace:DeviationModule.Views" 
              xmlns:models="clr-namespace:DeviationModule.Models" 
              xmlns:controls="clr-namespace:DeviationModule.Components" 
-             xmlns:viewmodel="clr-namespace:DeviationModule.ViewModel" 
+             xmlns:viewmodel="clr-namespace:DeviationModule.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodel:PositionViewModel}"
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Bisque">
-        <controls:FilteredDataGrid AutoGenerateColumns="True" ItemsSource="{Binding Deviations}">
+        <controls:FilteredDataGrid AutoGenerateColumns="False" ItemsSource="{Binding Deviations}">
+            <controls:FilteredDataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Owner" Binding="{Binding Owner}"></DataGridTextColumn>
+            </controls:FilteredDataGrid.Columns>
         </controls:FilteredDataGrid>        
     </Grid>
 </UserControl>

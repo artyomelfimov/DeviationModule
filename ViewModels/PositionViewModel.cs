@@ -7,7 +7,7 @@ using System.Windows.Navigation;
 using DeviationModule.Commands;
 using DeviationModule.Models;
 
-namespace DeviationModule.ViewModel
+namespace DeviationModule.ViewModels
 {
     internal class PositionViewModel : ViewModelBase
     {

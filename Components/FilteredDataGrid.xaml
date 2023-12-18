@@ -7,19 +7,25 @@
         <DockPanel>
             <TextBlock DockPanel.Dock="Left" Text="{Binding}">
             </TextBlock>
-            <Button  DockPanel.Dock="Right" Command="{x:Static control:FilteredDataGrid.OpenFilterCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridColumnHeader}}}" HorizontalAlignment="Right" Background="AliceBlue" Margin="5,0,0,0" Height="14" Width="14">
+            <Button  DockPanel.Dock="Right" Command="{x:Static control:FilteredDataGrid.OpenFilterCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}" HorizontalAlignment="Right" Background="AliceBlue" Margin="5,0,0,0" Height="14" Width="14">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Popup Width="200" Height="200" Placement="Mouse">
+            <Popup x:Name="FilterPopup" Width="200" Height="200" Placement="Mouse">
                 <StackPanel>
                     <TextBox Text="Ass"></TextBox>
-                    <ListBox>
-                        <ListBoxItem>Shit</ListBoxItem>
-                        <ListBoxItem>Fuck</ListBoxItem>
+                    <ListBox x:Name="FilteredListBox">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
+                                    <TextBlock Text="{Binding Element}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
                     <StackPanel>
                         <Button></Button>
