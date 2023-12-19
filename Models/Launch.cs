@@ -12,7 +12,6 @@ namespace DeviationModule.Models
         public int Id { get; set; }
 
         private string? consumer;
-        public int? ProcedureId { get; set; }
         public Procedure? Procedure { get; set; }
         public string? Consumer
         {

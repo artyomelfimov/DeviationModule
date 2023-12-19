@@ -26,7 +26,7 @@
                     <MenuItem Header="Запуски" Command="{Binding LaunchCommand}"></MenuItem>
                     <MenuItem Header="Позиции" Command="{Binding PositionCommand}"></MenuItem>
                 </Menu>
-                                <ContentControl Content="{Binding CurrentView}">
+                                <ContentControl x:Name="ContentCont"  Content="{Binding CurrentView}">
                                 </ContentControl>
                             </StackPanel>
                             

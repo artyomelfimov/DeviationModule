@@ -10,7 +10,6 @@ namespace DeviationModule.Models
         public int Id { get; set; }
 
         [ReadOnly(true)]
-        public int? ProcedureId { get; set; }
         public Procedure? Procedure { get; set; }
 
         [ReadOnly(true)]

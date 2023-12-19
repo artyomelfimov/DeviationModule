@@ -35,9 +35,9 @@ namespace DeviationModule
         public static void ConfigureServices(HostBuilderContext context,IServiceCollection services)
         {
             services.AddSingleton<ApplicationViewModel>();
-            services.AddSingleton<PlaningViewModel>();
-            services.AddSingleton<PositionViewModel>();
-            services.AddSingleton<EditorViewModel>();
+            services.AddTransient<PlaningViewModel>();
+            services.AddTransient<PositionViewModel>();
+            services.AddTransient<EditorViewModel>();
         }
     }
 

@@ -20,7 +20,7 @@ namespace DeviationModule.Components
         public Popup popup { get; private set; }
         public ListBox FilteredListBox { get; private set; }
          
-
+        public List<FilterListElement> FilterItems {  get; private set; }
         public event PropertyChangedEventHandler? PropertyChanged;
         public FilteredDataGrid()
         {
@@ -29,6 +29,7 @@ namespace DeviationModule.Components
             button = new Button();
             FilteredListBox = new ListBox();
             popup = new Popup();
+            FilterItems = new();
         }
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
@@ -62,12 +63,16 @@ namespace DeviationModule.Components
             popup = VisualTreeHelpers.FindChild<Popup>(header, "FilterPopup");
             popup.IsOpen = true;
             FilteredListBox = VisualTreeHelpers.FindChild<ListBox>(popup.Child, "FilteredListBox");
-            var listboxitems = Items.Cast<Object>()
+            var columnitems = Items.Cast<Object>()
                 .Select(x => x.GetType().GetProperty(PropertyName)?.GetValue(x, null))
                 .Distinct()
                 .Select(item => item)
                 .ToList();
-            FilteredListBox.ItemsSource = listboxitems;
+            foreach (var item in columnitems)
+            {
+                FilterItems.Add(new FilterListElement { IsChecked = true, Element = item.ToString() });
+            }
+            FilteredListBox.ItemsSource = FilterItems;
         }
     }
     /// <summary>
@@ -86,5 +91,11 @@ namespace DeviationModule.Components
         }
 
         #endregion Public Constructors
+    }
+    public class FilterListElement
+    {
+        public bool IsChecked { get; set; }
+
+        public string? Element { get; set; }
     }
 }

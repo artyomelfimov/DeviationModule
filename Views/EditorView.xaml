@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Coral">
-        <ListView ItemsSource="{Binding CurrentItem}">
+        <ListView ItemsSource="{Binding SelectedProcedure}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Owner}">Владелец</GridViewColumn>

@@ -8,22 +8,23 @@ using System.Threading.Tasks;
 
 namespace DeviationModule.ViewModels
 {
-    internal class EditorViewModel : ViewModelBase
+    internal class EditorViewModel : ViewModelBase, IViewModel
     {
-        ApplicationViewModel parentViewModel { get; set; }
+        private Procedure? selectedProcedure;
+        public Procedure? SelectedProcedure 
+        {
+            get => selectedProcedure;
+            set {
+                selectedProcedure = value;
+                OnPropertyChanged();
+    }
+}
+ApplicationViewModel parentViewModel { get; set; }
         
         public EditorViewModel(ApplicationViewModel model) {
                 parentViewModel = model;
-                currentItem = model.SelectedItem;
+                SelectedProcedure = model.SelectedItem;
             
-        }
-        private Procedure? currentItem;
-        public Procedure? CurrentItem { get => currentItem; 
-            set
-            {
-                currentItem = value;
-                OnPropertyChanged();
-            }
         }
     }
 }

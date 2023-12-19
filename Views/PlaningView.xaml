@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeviationModule.Views" 
-        xmlns:models="clr-namespace:DeviationModule.Models" 
-        mc:Ignorable="d"
+        xmlns:models="clr-namespace:DeviationModule.Models" xmlns:viewmodels="clr-namespace:DeviationModule.ViewModels" 
+             mc:Ignorable="d"
         Height="540" Width="960">
+
     <DockPanel Background="Aqua">
         <StatusBar Height="30" DockPanel.Dock="Bottom"></StatusBar>
         <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
@@ -18,8 +19,13 @@
         </StackPanel>
             
         <StackPanel  Orientation="Vertical">
-            <DataGrid ItemsSource="{Binding Launches}" MinHeight="450" MinWidth="700">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Launches}" MinHeight="450" MinWidth="700">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Заказчик" Binding="{Binding Consumer}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Период" Binding="{Binding Period}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата запуска" Binding="{Binding LaunchDate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Время запуска" Binding="{Binding LaunchTime}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

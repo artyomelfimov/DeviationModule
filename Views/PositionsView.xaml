@@ -12,10 +12,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Bisque">
-        <controls:FilteredDataGrid AutoGenerateColumns="False" ItemsSource="{Binding Deviations}">
+        <controls:FilteredDataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Deviations}">
             <controls:FilteredDataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Owner" Binding="{Binding Owner}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Владелец" Binding="{Binding Owner}"></DataGridTextColumn>
             </controls:FilteredDataGrid.Columns>
         </controls:FilteredDataGrid>        
     </Grid>

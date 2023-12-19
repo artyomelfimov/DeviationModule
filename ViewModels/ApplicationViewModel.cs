@@ -16,9 +16,9 @@ namespace DeviationModule.ViewModels
         public ICommand LaunchCommand { get; set; }
         public ICommand EditorCommand { get; set; }
 
-        private object? currentView;
+        private IViewModel? currentView;
 
-        public object? CurrentView
+        public IViewModel? CurrentView
         {
             get => currentView;
             set
@@ -34,21 +34,21 @@ namespace DeviationModule.ViewModels
             get => selectedItem;
             set { selectedItem = value;
                 OnPropertyChanged();
-                }
+            }
         }
 
         public ApplicationViewModel()
         {
             using TestDbContext db = new();
-            CurrentView = new();
             // получаем объекты из бд и выводим на консоль
             Procedures = db.Procedures.Include(u => u.Deviations).Include(u => u.Launches).ToList();
             PositionCommand = new RelayCommand(IsPositionCommandExecuted, CanCommandExecute);
             LaunchCommand = new RelayCommand(IsLaunchCommandExecuted, CanCommandExecute);
             EditorCommand = new RelayCommand(IsEditorCommandExecuted, CanCommandExecute);
 
+
         }
-        
+
         private bool CanCommandExecute(object p) => SelectedItem != null;
 
         private void IsPositionCommandExecuted(object p) => CurrentView = App.Host.Services.GetRequiredService<PositionViewModel>();

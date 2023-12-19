@@ -1,20 +1,35 @@
 ﻿using DeviationModule.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeviationModule.ViewModels
 {
-    class PlaningViewModel : ViewModelBase
+    class PlaningViewModel : ViewModelBase , IViewModel
     {
-        public ObservableCollection<Launch> Launches { get; set; }
+        private Procedure? selectedProcedure;
+        private ObservableCollection<Launch>? launches;
+        public Procedure? SelectedProcedure
+        {
+            get => selectedProcedure;
+            set
+            {
+                selectedProcedure = value;
+                OnPropertyChanged();
+                launches = selectedProcedure?.Launches ?? new ObservableCollection<Launch>();
+            }
+        }
+
+        public ObservableCollection<Launch>? Launches
+        {
+            get=> launches;
+            set
+            {
+                launches = value;
+                OnPropertyChanged(nameof(launches));
+            }
+        }
         public PlaningViewModel(ApplicationViewModel model)
         {
-            Launches = new ObservableCollection<Launch>();
-            Launches = model.SelectedItem?.Launches ?? new ObservableCollection<Launch>();
+            SelectedProcedure = model.SelectedItem;
 
         }
     }
