@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeviationModule.Components;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,7 +9,7 @@ namespace DeviationModule.Models;
 public class Procedure : INotifyPropertyChanged
 {
     public ObservableCollection<Deviation>? Deviations { get; set; } = new();
-    public ObservableCollection<Launch>? Launches { get; set; } = new();
+    public FullyObservableCollection<Launch>? Launches { get; set; } = new();
     private string? owner;
     private string? name;
     private string? description;

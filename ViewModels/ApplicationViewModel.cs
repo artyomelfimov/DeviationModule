@@ -7,6 +7,7 @@ using DeviationModule.Commands;
 using Microsoft.EntityFrameworkCore;
 using DeviationModule.Views;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 
 namespace DeviationModule.ViewModels
 {
@@ -34,6 +35,10 @@ namespace DeviationModule.ViewModels
             get => selectedItem;
             set { selectedItem = value;
                 OnPropertyChanged();
+                if (CurrentView != null)
+                {
+                    CurrentView.SelectedProcedure = selectedItem;
+                }
             }
         }
 

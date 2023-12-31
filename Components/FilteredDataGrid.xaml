@@ -16,20 +16,20 @@
             </Button>
             <Popup x:Name="FilterPopup" Width="200" Height="200" Placement="Mouse">
                 <StackPanel>
-                    <TextBox Text="Ass"></TextBox>
+                    <TextBox Text=" "></TextBox>
                     <ListBox x:Name="FilteredListBox">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
+                                <StackPanel Orientation="Horizontal">
                                     <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
                                     <TextBlock Text="{Binding Element}"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <StackPanel>
-                        <Button></Button>
-                        <Button></Button>
+                    <StackPanel Orientation="Horizontal">
+                        <Button>Принять</Button>
+                        <Button>Сбросить</Button>
                     </StackPanel>
                 </StackPanel>
             </Popup>

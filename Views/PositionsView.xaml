@@ -14,8 +14,8 @@
     <Grid Background="Bisque">
         <controls:FilteredDataGrid AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding Deviations}">
             <controls:FilteredDataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Владелец" Binding="{Binding Owner}"></DataGridTextColumn>
+                <controls:FilteredDataGridTextColumn Header="Id" Binding="{Binding Id}"></controls:FilteredDataGridTextColumn>
+                <controls:FilteredDataGridTextColumn Header="Владелец" Binding="{Binding Owner}"></controls:FilteredDataGridTextColumn>
             </controls:FilteredDataGrid.Columns>
         </controls:FilteredDataGrid>        
     </Grid>

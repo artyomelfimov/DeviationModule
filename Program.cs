@@ -13,7 +13,7 @@ namespace DeviationModule
         [STAThread]
         public static void Main() 
         {
-            App app = new App();
+            App app = new();
             app.InitializeComponent();
             app.Run();
         }

@@ -1,14 +1,17 @@
 ﻿using DeviationModule.Commands;
+using DeviationModule.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace DeviationModule.Components
@@ -16,8 +19,11 @@ namespace DeviationModule.Components
     internal class FilteredDataGrid : DataGrid, INotifyPropertyChanged
     {
         public static ICommand? OpenFilterCommand { get; set; }
-        public Button button { get; private set; }
-        public Popup popup { get; private set; }
+        public Dictionary<string,Predicate<object>>? Criteria { get; set; }
+        public ICollectionView? FilteredDataGridView { get; set; }
+
+        public Button Button { get; private set; }
+        public Popup Popup { get; private set; }
         public ListBox FilteredListBox { get; private set; }
          
         public List<FilterListElement> FilterItems {  get; private set; }
@@ -26,10 +32,11 @@ namespace DeviationModule.Components
         {
             OpenFilterCommand = new RelayCommand(IsOpenFilterExecuted);
             Resources = new FilteredDataGridDictionary();
-            button = new Button();
+            Button = new Button();
             FilteredListBox = new ListBox();
-            popup = new Popup();
+            Popup = new Popup();
             FilterItems = new();
+            
         }
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
@@ -37,13 +44,16 @@ namespace DeviationModule.Components
             if (!AutoGenerateColumns) {
                 OnCustomColumnCreate();
             }
+            Criteria = new Dictionary<string, Predicate<object>>();
+            FilteredDataGridView = CollectionViewSource.GetDefaultView(ItemsSource);
+            FilteredDataGridView.Filter = Filter;
         }
         protected void OnCustomColumnCreate()
         {
             foreach (var item in Columns)
             {
-                if (item != null && item.GetType() == typeof(DataGridTextColumn)) {
-                    ((DataGridTextColumn)item).HeaderTemplate = (DataTemplate)FindResource("ColTemp");
+                if (item != null && item.GetType() == typeof(FilteredDataGridTextColumn)) {
+                    ((FilteredDataGridTextColumn)item).HeaderTemplate = (DataTemplate)FindResource("ColTemp");
 
                 }
 
@@ -51,18 +61,18 @@ namespace DeviationModule.Components
         }
         public void IsOpenFilterExecuted(object p)
         {
-            button = (Button)p;
+            Button = (Button)p;
 
-            if (Items.Count == 0 || button == null) return;
+            if (Items.Count == 0 || Button == null) return;
 
             // navigate up to the current header and get column type
-            var header = VisualTreeHelpers.FindAncestor<DataGridColumnHeader>(button);
+            var header = VisualTreeHelpers.FindAncestor<DataGridColumnHeader>(Button);
             var columnType = header.Column.GetType();
             string? PropertyName = header.Column.SortMemberPath;
             // then down to the current popup
-            popup = VisualTreeHelpers.FindChild<Popup>(header, "FilterPopup");
-            popup.IsOpen = true;
-            FilteredListBox = VisualTreeHelpers.FindChild<ListBox>(popup.Child, "FilteredListBox");
+            Popup = VisualTreeHelpers.FindChild<Popup>(header, "FilterPopup");
+            Popup.IsOpen = true;
+            FilteredListBox = VisualTreeHelpers.FindChild<ListBox>(Popup.Child, "FilteredListBox");
             var columnitems = Items.Cast<Object>()
                 .Select(x => x.GetType().GetProperty(PropertyName)?.GetValue(x, null))
                 .Distinct()
@@ -73,6 +83,11 @@ namespace DeviationModule.Components
                 FilterItems.Add(new FilterListElement { IsChecked = true, Element = item.ToString() });
             }
             FilteredListBox.ItemsSource = FilterItems;
+        }
+        private bool Filter(object o)
+        {
+            return Criteria.Values.Aggregate(true,
+                   (prevValue, predicate) => prevValue && predicate(o));
         }
     }
     /// <summary>

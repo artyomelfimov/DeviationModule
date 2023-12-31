@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DeviationModule.Views" 
-        xmlns:models="clr-namespace:DeviationModule.Models" xmlns:viewmodels="clr-namespace:DeviationModule.ViewModels" 
+        xmlns:com="clr-namespace:DeviationModule.Components"    
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:vm="clr-namespace:DeviationModule.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=vm:PlaningViewModel}"
              mc:Ignorable="d"
         Height="540" Width="960">
 
@@ -12,14 +14,20 @@
         <StatusBar Height="30" DockPanel.Dock="Bottom"></StatusBar>
         <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
             <ToggleButton x:Name="DatesButton">Все/по дате</ToggleButton>
-            <Calendar x:Name="LaunchCalendar"></Calendar>
+            <com:RedCalendar RedDatesCollection="{Binding RedDates}" x:Name="LaunchCalendar">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger SourceObject="{Binding RedDates}" EventName="CollectionChanged">
+                        <i:CallMethodAction TargetObject="{Binding ElementName=LaunchCalendar}" MethodName="ValueChanged"></i:CallMethodAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </com:RedCalendar>
             <Button>Добавить</Button>
             <Button>Удалить</Button>
             <Button>Копировать</Button>
         </StackPanel>
             
         <StackPanel  Orientation="Vertical">
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Launches}" MinHeight="450" MinWidth="700">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Launches,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinHeight="450" MinWidth="700">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Заказчик" Binding="{Binding Consumer}"></DataGridTextColumn>
