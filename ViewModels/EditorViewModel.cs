@@ -1,10 +1,4 @@
 ﻿using DeviationModule.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeviationModule.ViewModels
 {
@@ -19,10 +13,11 @@ namespace DeviationModule.ViewModels
                 OnPropertyChanged();
     }
 }
-ApplicationViewModel parentViewModel { get; set; }
+
+        public ApplicationViewModel ParentViewModel { get; set; }
         
         public EditorViewModel(ApplicationViewModel model) {
-                parentViewModel = model;
+                ParentViewModel = model;
                 SelectedProcedure = model.SelectedItem;
             
         }

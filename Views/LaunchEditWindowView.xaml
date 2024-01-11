@@ -1,0 +1,35 @@
+﻿<Window x:Class="DeviationModule.Views.LaunchEditWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeviationModule.Views"
+        mc:Ignorable="d"
+        Title="LaunchEditWindowView" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Владелец"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Период"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Дата запуска"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Время запуска"></TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Owner}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Period}"></TextBox>
+        <DatePicker Grid.Row="2" Grid.Column="1" Text="{Binding StartDate}"></DatePicker>
+        <DatePickerTextBox Grid.Row="3" Grid.Column="1" Text="{Binding StartTime}"></DatePickerTextBox>
+        <UniformGrid  Margin="60,20,60,0" Grid.Row="4" Grid.ColumnSpan="2">
+            <Button Width="100" Height="30" HorizontalAlignment="Center">ОК</Button>
+            <Button Width="100" Height="30" HorizontalAlignment="Center">Отменить</Button>
+        </UniformGrid>
+    </Grid>
+</Window>

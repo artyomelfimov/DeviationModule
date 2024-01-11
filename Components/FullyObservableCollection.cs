@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeviationModule.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -66,9 +67,9 @@ namespace DeviationModule.Components
             ItemPropertyChanged?.Invoke(this, e);
         }
 
-        protected void OnItemPropertyChanged(int index, PropertyChangedEventArgs e)
+        protected void OnItemPropertyChanged(int index,object value, PropertyChangedEventArgs e)
         {
-            OnItemPropertyChanged(new ItemPropertyChangedEventArgs(index, e));
+            OnItemPropertyChanged(new ItemPropertyChangedEventArgs(index,value, e));
         }
 
         private void ChildPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -76,12 +77,14 @@ namespace DeviationModule.Components
             var typedSender = (T)sender;
             var i = Items.IndexOf(typedSender);
 
+            
+            var oldvalue = typedSender;
             if (i < 0)
             {
                 throw new ArgumentException("Received property notification from item not in collection");
             }
 
-            OnItemPropertyChanged(i, e);
+            OnItemPropertyChanged(i, oldvalue, e);
         }
 
         private void ObserveAll()
@@ -103,9 +106,10 @@ namespace DeviationModule.Components
         /// </summary>
         /// <param name="index">Индекс в коллекции для изменения.</param>
         /// <param name="name">Имя свойства, которое изменилось.</param>
-        public ItemPropertyChangedEventArgs(int index, string name) : base(name)
+        public ItemPropertyChangedEventArgs(int index, object value, string name) : base(name)
         {
             CollectionIndex = index;
+            OldValue = value;
         }
 
         /// <summary>
@@ -113,7 +117,7 @@ namespace DeviationModule.Components
         /// </summary>
         /// <param name="index">Индекс.</param>
         /// <param name="args">Экземпляр <see cref="PropertyChangedEventArgs" /> содержащий измененные данные.</param>
-        public ItemPropertyChangedEventArgs(int index, PropertyChangedEventArgs args) : this(index, args.PropertyName) { }
+        public ItemPropertyChangedEventArgs(int index,object value, PropertyChangedEventArgs args) : this(index,value, args.PropertyName) { }
 
         /// <summary>
         ///     Индекс в коллекции, где произошло изменнеие.
@@ -122,5 +126,6 @@ namespace DeviationModule.Components
         ///     Индекс в родительской коллекции.
         /// </value>
         public int CollectionIndex { get; }
+        public object OldValue { get; }
     }
 }

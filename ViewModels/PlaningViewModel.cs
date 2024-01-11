@@ -19,17 +19,6 @@ namespace DeviationModule.ViewModels
                 Launches = selectedProcedure?.Launches ?? [];
             }
         }
-        private FullyObservableCollection<Launch>? launches;
-
-        public FullyObservableCollection<Launch>? Launches
-        {
-            get=> launches;
-            set
-            {
-                launches = value;
-                OnPropertyChanged();
-            }
-        }
         private ObservableCollection<string>? redDates;
         public ObservableCollection<string>? RedDates
         {
@@ -40,19 +29,46 @@ namespace DeviationModule.ViewModels
             set
             {
                 redDates = value;
-                OnPropertyChanged(nameof(RedDates));
+                OnPropertyChanged();
             }
         }
+        private FullyObservableCollection<Launch>? launches;
+
+        public FullyObservableCollection<Launch>? Launches
+        {
+            get=> launches;
+            set
+            {
+                
+                launches = value;
+                OnPropertyChanged();
+                if (RedDates != null)
+                {
+                    RedDates.Clear();
+                    foreach (var item in Launches)
+                    {
+                        RedDates.Add(item.LaunchDate.Value.ToShortDateString());
+                    }
+                }
+             
+            }
+        }
+        
         public PlaningViewModel(ApplicationViewModel model)
         {
             SelectedProcedure = model.SelectedItem;
             Launches.ItemPropertyChanged += Launches_ItemPropertyChanged;
+            RedDates = new ObservableCollection<string>();
+            foreach (var item in Launches)
+            {
+                RedDates.Add(item.LaunchDate.Value.ToShortDateString());
+            }
 
         }
 
         private void Launches_ItemPropertyChanged(object? sender, ItemPropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Period")
+            if (e.PropertyName == "LaunchDate")
             {
 
             }

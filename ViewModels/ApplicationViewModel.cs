@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using DeviationModule.Infrastructure;
 using DeviationModule.Models;
 using DeviationModule.Commands;
-using Microsoft.EntityFrameworkCore;
-using DeviationModule.Views;
 using Microsoft.Extensions.DependencyInjection;
-using System.Diagnostics;
+using DeviationModule.Services;
 
 namespace DeviationModule.ViewModels
 {
     public class ApplicationViewModel : ViewModelBase
     {
+        public ProcedureManager? ProcedureManager { get; set; }
         public ICommand PositionCommand { get; set; }
         public ICommand LaunchCommand { get; set; }
         public ICommand EditorCommand { get; set; }
@@ -29,6 +27,8 @@ namespace DeviationModule.ViewModels
             }
         }
         public List<Procedure>? Procedures { get; set; }
+        public List<Deviation>? Deviations { get; set; }
+        public List<Launch>? Launches { get; set; }
         private Procedure? selectedItem;
         public Procedure? SelectedItem 
         {
@@ -42,11 +42,15 @@ namespace DeviationModule.ViewModels
             }
         }
 
-        public ApplicationViewModel()
+        public ApplicationViewModel(ProcedureManager procedureManager)
         {
-            using TestDbContext db = new();
+            ProcedureManager = procedureManager;
+            //using TestDbContext db = new();
             // получаем объекты из бд и выводим на консоль
-            Procedures = db.Procedures.Include(u => u.Deviations).Include(u => u.Launches).ToList();
+            //Procedures = db.Procedures.Include(u => u.Deviations).Include(u => u.Launches).ToList();
+            Procedures = ProcedureManager?.Procedures.ToList();
+            Deviations = ProcedureManager?.Deviations.ToList();
+            Launches = ProcedureManager?.Launches.ToList();
             PositionCommand = new RelayCommand(IsPositionCommandExecuted, CanCommandExecute);
             LaunchCommand = new RelayCommand(IsLaunchCommandExecuted, CanCommandExecute);
             EditorCommand = new RelayCommand(IsEditorCommandExecuted, CanCommandExecute);

@@ -16,7 +16,7 @@ public partial class TestDbContext : DbContext
     }
     public virtual DbSet<Launch> Launches { get; set; }
     public virtual DbSet<Procedure> Procedures { get; set; }
-    public virtual DbSet<Deviation> Positions { get; set; }
+    public virtual DbSet<Deviation> Deviations { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=TestDB_1;Username=postgres;Password=1234");

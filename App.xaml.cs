@@ -1,4 +1,5 @@
-﻿using DeviationModule.ViewModels;
+﻿using DeviationModule.Services;
+using DeviationModule.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -38,6 +39,10 @@ namespace DeviationModule
             services.AddTransient<PlaningViewModel>();
             services.AddTransient<PositionViewModel>();
             services.AddTransient<EditorViewModel>();
+            services.AddSingleton<ProcedureManager>();
+            services.AddSingleton<ProcedureRepo>();
+            services.AddSingleton<LaunchRepo>();
+            services.AddSingleton<DeviationRepo>();
         }
     }
 

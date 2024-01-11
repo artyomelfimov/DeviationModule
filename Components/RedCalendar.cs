@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 
@@ -42,7 +38,7 @@ namespace DeviationModule.Components
 
         public RedCalendar()
         {
-            this.Resources = new ResourceDictionary();
+            this.Resources = new DictionaryForCalendar();
 
             RedDatesCollection = new ObservableCollection<string>();
         }
@@ -58,7 +54,7 @@ namespace DeviationModule.Components
     {
         public object? Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var RedDate = values[0].ToString();
+            var RedDate = ((DateTime)values[0]).ToShortDateString();
             var RedCal = (RedCalendar)values[1];
             if (RedCal.RedDatesCollection != null && RedCal.RedDatesCollection.Contains(RedDate))
             {

@@ -5,36 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:com="clr-namespace:DeviationModule.Components"    
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:vm="clr-namespace:DeviationModule.ViewModels" 
-        d:DataContext="{d:DesignInstance Type=vm:PlaningViewModel}"
-             mc:Ignorable="d"
-        Height="540" Width="960">
+        xmlns:vm="clr-namespace:DeviationModule.ViewModels" xmlns:models="clr-namespace:DeviationModule.Models"
+             d:DataContext="{d:DesignInstance Type=vm:PlaningViewModel}"
+             mc:Ignorable="d">
 
     <DockPanel Background="Aqua">
         <StatusBar Height="30" DockPanel.Dock="Bottom"></StatusBar>
         <StackPanel DockPanel.Dock="Right" Orientation="Vertical">
             <ToggleButton x:Name="DatesButton">Все/по дате</ToggleButton>
-            <com:RedCalendar RedDatesCollection="{Binding RedDates}" x:Name="LaunchCalendar">
+            <com:RedCalendar RedDatesCollection="{Binding RedDates,UpdateSourceTrigger=PropertyChanged}" x:Name="LaunchCalendar">
                 <i:Interaction.Triggers>
-                    <i:EventTrigger SourceObject="{Binding RedDates}" EventName="CollectionChanged">
+                    <i:EventTrigger SourceObject="{Binding RedDates,UpdateSourceTrigger=PropertyChanged}" EventName="CollectionChanged">
                         <i:CallMethodAction TargetObject="{Binding ElementName=LaunchCalendar}" MethodName="ValueChanged"></i:CallMethodAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </com:RedCalendar>
             <Button>Добавить</Button>
             <Button>Удалить</Button>
-            <Button>Копировать</Button>
+            <Button>Изменить</Button>
         </StackPanel>
-            
+
         <StackPanel  Orientation="Vertical">
             <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Launches,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinHeight="450" MinWidth="700">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Заказчик" Binding="{Binding Consumer}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Период" Binding="{Binding Period}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Дата запуска" Binding="{Binding LaunchDate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата запуска" Binding="{Binding LaunchDate,StringFormat=d}">
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Время запуска" Binding="{Binding LaunchTime}"></DataGridTextColumn>
                 </DataGrid.Columns>
+                
             </DataGrid>
         </StackPanel>
     </DockPanel>

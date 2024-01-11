@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DeviationModule.Models.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace DeviationModule.Models
 {
-    public class Deviation : INotifyPropertyChanged
+    public class Deviation : INotifyPropertyChanged, IEntity
     {
         [ReadOnly(true)]
         public int Id { get; set; }

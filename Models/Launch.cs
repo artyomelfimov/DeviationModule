@@ -1,16 +1,18 @@
-﻿using System;
+﻿using DeviationModule.Components;
+using DeviationModule.Models.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace DeviationModule.Models
 {
-    public class Launch : INotifyPropertyChanged
+    public class Launch : INotifyPropertyChanged, IEntity
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         [ReadOnly(true)]
         public int Id { get; set; }
-
+         
         private string? consumer;
         public Procedure? Procedure { get; set; }
         public string? Consumer
@@ -29,7 +31,12 @@ namespace DeviationModule.Models
 
         public DateTime? LaunchDate
         {
-            get => launchdate; set { launchdate = value; OnPropertyChanged(); }
+            get => launchdate; 
+            set {
+                var olddate = launchdate;
+                launchdate = value;
+                OnPropertyChanged();
+                  }
         }
         private DateTime? launchtime;
 
@@ -41,8 +48,8 @@ namespace DeviationModule.Models
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+       
     }
 }
