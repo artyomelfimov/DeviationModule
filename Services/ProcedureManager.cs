@@ -22,6 +22,6 @@ namespace DeviationModule.Services
             _Procedures = Procedures;
             _Launches = Launches;
         }
-
+        public void Update(Launch launch) => _Launches.Update(launch.Id,launch);
     }
 }

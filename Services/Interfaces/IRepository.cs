@@ -15,7 +15,7 @@ namespace DeviationModule.Services.Interfaces
 
         void Remove(T entity);
         void Add(T entity);
-        void Update(T entity, int id);
+        void Update(int id, T entity);
 
     }
 

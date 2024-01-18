@@ -1,14 +1,24 @@
-﻿using DeviationModule.Components;
+﻿using DeviationModule.Commands;
+using DeviationModule.Components;
 using DeviationModule.Models;
+using DeviationModule.Services;
+using DeviationModule.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
+using Windows.Networking;
 
 namespace DeviationModule.ViewModels
 {
     class PlaningViewModel : ViewModelBase , IViewModel
     {
+        private UserDialogService UserDialogService;
+        private ProcedureManager ProcedureManager;
+         
         private Procedure? selectedProcedure;
+        private ICommand EditLaunchCommand {  get; set; }
         public Procedure? SelectedProcedure
         {
             get => selectedProcedure;
@@ -54,7 +64,7 @@ namespace DeviationModule.ViewModels
             }
         }
         
-        public PlaningViewModel(ApplicationViewModel model)
+        public PlaningViewModel(ApplicationViewModel model,ProcedureManager ProcedureManager,UserDialogService UserDialogService)
         {
             SelectedProcedure = model.SelectedItem;
             Launches.ItemPropertyChanged += Launches_ItemPropertyChanged;
@@ -63,7 +73,7 @@ namespace DeviationModule.ViewModels
             {
                 RedDates.Add(item.LaunchDate.Value.ToShortDateString());
             }
-
+            EditLaunchCommand = new RelayCommand(IsEditLaunchCommandExecuted,CanExecuteEditLaunchCommand);
         }
 
         private void Launches_ItemPropertyChanged(object? sender, ItemPropertyChangedEventArgs e)
@@ -72,6 +82,22 @@ namespace DeviationModule.ViewModels
             {
 
             }
+        }
+        private bool CanExecuteEditLaunchCommand(object item) => item != null & item is Launch;
+
+        private void IsEditLaunchCommandExecuted(object p)
+        {
+            var launch = (Launch) p;
+            if (launch != null)
+            {
+            if (UserDialogService.Edit(p))
+                ProcedureManager.Update((Launch)p);
+
+                    MessageBox.Show("Пользователь выполнил редактирование");
+            }
+            else
+                MessageBox.Show("Пользователь отказался");
+
         }
     }
 }

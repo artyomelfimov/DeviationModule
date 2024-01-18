@@ -22,7 +22,7 @@
             </com:RedCalendar>
             <Button>Добавить</Button>
             <Button>Удалить</Button>
-            <Button>Изменить</Button>
+            <Button Content="Изменить" Command="{Binding }"></Button>
         </StackPanel>
 
         <StackPanel  Orientation="Vertical">

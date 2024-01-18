@@ -19,13 +19,13 @@ namespace DeviationModule.Views
     /// </summary>
     public partial class LaunchEditWindowView : Window
     {
-        public static DependencyProperty OwnerProperty = DependencyProperty.Register(
-            nameof(Owner),
+        public static DependencyProperty ConsumerProperty = DependencyProperty.Register(
+            nameof(Consumer),
             typeof(string),
             typeof(LaunchEditWindowView),
             new PropertyMetadata(null)
             );
-        public new string Owner { get => (string)GetValue(OwnerProperty);set => SetValue(OwnerProperty,value); }
+        public string Consumer { get => (string)GetValue(ConsumerProperty);set => SetValue(ConsumerProperty,value); }
         
         public static DependencyProperty PeriodProperty = DependencyProperty.Register(
             nameof(Period),
@@ -41,7 +41,7 @@ namespace DeviationModule.Views
             typeof(LaunchEditWindowView),
             new PropertyMetadata(null)
             );
-        public DateTime StartDate { get => (DateTime)GetValue(StartDateProperty); set => SetValue(StartDateProperty, value); }
+        public DateTime? StartDate { get => (DateTime)GetValue(StartDateProperty); set => SetValue(StartDateProperty, value); }
         
         public static DependencyProperty StartTimeProperty = DependencyProperty.Register(
             nameof(StartTime),
@@ -49,7 +49,7 @@ namespace DeviationModule.Views
             typeof(LaunchEditWindowView),
             new PropertyMetadata(null)
             );
-        public DateTime StartTime { get => (DateTime)GetValue(StartTimeProperty); set => SetValue(StartTimeProperty, value); }
+        public DateTime? StartTime { get => (DateTime)GetValue(StartTimeProperty); set => SetValue(StartTimeProperty, value); }
 
         public LaunchEditWindowView()
         {

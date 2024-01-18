@@ -38,7 +38,7 @@ namespace DeviationModule.Services
         {
             if (_Items.Contains(entity)) _Items.Remove(entity);
         }
-        public void Update(T entity, int id)
+        public void Update(int id,T entity)
         {
             var destination = ((IRepository<T>)this).Get(id);
             if (destination != null)

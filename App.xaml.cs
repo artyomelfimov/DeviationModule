@@ -43,6 +43,7 @@ namespace DeviationModule
             services.AddSingleton<ProcedureRepo>();
             services.AddSingleton<LaunchRepo>();
             services.AddSingleton<DeviationRepo>();
+            services.AddSingleton<UserDialogService>();
         }
     }
 
