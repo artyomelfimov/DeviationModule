@@ -30,8 +30,6 @@ namespace DeviationModule.Services
             _Items.Add(entity);
         }
 
-        public T Get(int id) => Get(id);
-
         public IEnumerable<T> GetAll() => _Items;
 
         public void Remove(T entity)

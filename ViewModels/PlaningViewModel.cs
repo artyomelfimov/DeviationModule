@@ -18,7 +18,8 @@ namespace DeviationModule.ViewModels
         private ProcedureManager ProcedureManager;
          
         private Procedure? selectedProcedure;
-        private ICommand EditLaunchCommand {  get; set; }
+        private Launch? selectedLaunch;
+        public ICommand EditLaunchCommand {  get; set; }
         public Procedure? SelectedProcedure
         {
             get => selectedProcedure;
@@ -27,6 +28,15 @@ namespace DeviationModule.ViewModels
                 selectedProcedure = value;
                 OnPropertyChanged();
                 Launches = selectedProcedure?.Launches ?? [];
+            }
+        }
+        public Launch? SelectedLaunch
+        {
+            get => selectedLaunch;
+            set
+            {
+                selectedLaunch = value;
+                OnPropertyChanged();
             }
         }
         private ObservableCollection<string>? redDates;
@@ -64,7 +74,7 @@ namespace DeviationModule.ViewModels
             }
         }
         
-        public PlaningViewModel(ApplicationViewModel model,ProcedureManager ProcedureManager,UserDialogService UserDialogService)
+        public PlaningViewModel(ApplicationViewModel model,ProcedureManager _ProcedureManager,UserDialogService _UserDialogService)
         {
             SelectedProcedure = model.SelectedItem;
             Launches.ItemPropertyChanged += Launches_ItemPropertyChanged;
@@ -73,6 +83,8 @@ namespace DeviationModule.ViewModels
             {
                 RedDates.Add(item.LaunchDate.Value.ToShortDateString());
             }
+            UserDialogService = _UserDialogService;
+            ProcedureManager = _ProcedureManager;
             EditLaunchCommand = new RelayCommand(IsEditLaunchCommandExecuted,CanExecuteEditLaunchCommand);
         }
 

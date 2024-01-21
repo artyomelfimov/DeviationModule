@@ -36,7 +36,7 @@ namespace DeviationModule.Views
         public string Period { get => (string)GetValue(PeriodProperty); set => SetValue(PeriodProperty, value); }
 
         public static DependencyProperty StartDateProperty = DependencyProperty.Register(
-            nameof(Owner),
+            nameof(StartDate),
             typeof(DateTime),
             typeof(LaunchEditWindowView),
             new PropertyMetadata(null)

@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace DeviationModule.Commands
 {
-    abstract class BaseCommand : ICommand
+    public abstract class BaseCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged
         {

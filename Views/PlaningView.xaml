@@ -22,11 +22,11 @@
             </com:RedCalendar>
             <Button>Добавить</Button>
             <Button>Удалить</Button>
-            <Button Content="Изменить" Command="{Binding }"></Button>
+            <Button Content="Изменить" Command="{Binding EditLaunchCommand}" CommandParameter="{Binding SelectedLaunch}"></Button>
         </StackPanel>
 
         <StackPanel  Orientation="Vertical">
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Launches,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinHeight="450" MinWidth="700">
+            <DataGrid x:Name="Launches" SelectedItem="{Binding SelectedLaunch}" AutoGenerateColumns="False" ItemsSource="{Binding Launches,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinHeight="450" MinWidth="700">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Заказчик" Binding="{Binding Consumer}"></DataGridTextColumn>
