@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviationModule", "DeviationModule.csproj", "{275E81CA-EADB-4970-957E-551A453AD92D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviationModule.DAL", "..\DeviationModule.DAL\DeviationModule.DAL.csproj", "{637DD5BC-20E5-44CE-B2A9-AD047D25E487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deviation.Interfaces", "..\Deviation.Interfaces\Deviation.Interfaces.csproj", "{6C9D5C1E-E8BC-475E-A9BA-AD9EC6C91906}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{275E81CA-EADB-4970-957E-551A453AD92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{275E81CA-EADB-4970-957E-551A453AD92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{275E81CA-EADB-4970-957E-551A453AD92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{637DD5BC-20E5-44CE-B2A9-AD047D25E487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637DD5BC-20E5-44CE-B2A9-AD047D25E487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637DD5BC-20E5-44CE-B2A9-AD047D25E487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637DD5BC-20E5-44CE-B2A9-AD047D25E487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9D5C1E-E8BC-475E-A9BA-AD9EC6C91906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9D5C1E-E8BC-475E-A9BA-AD9EC6C91906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9D5C1E-E8BC-475E-A9BA-AD9EC6C91906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9D5C1E-E8BC-475E-A9BA-AD9EC6C91906}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

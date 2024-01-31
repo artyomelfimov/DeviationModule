@@ -17,20 +17,9 @@ namespace DeviationModule
             app.InitializeComponent();
             app.Run();
         }
-        
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            var builder = Host.CreateDefaultBuilder(args);
-            builder.UseContentRoot(Environment.CurrentDirectory);
-            builder.ConfigureAppConfiguration((host, cfg) =>
-            {
-                cfg.SetBasePath(Environment.CurrentDirectory);
-                cfg.AddJsonFile("AppSettings.json", optional: true, reloadOnChange: true);
-            }
-            );
-            builder.ConfigureServices(App.ConfigureServices);
-            return builder;
 
-        } 
+        public static IHostBuilder CreateHostBuilder(string[] args) => Host
+          .CreateDefaultBuilder(args)
+          .ConfigureServices(App.ConfigureServices);
     }
 }

@@ -1,41 +1,41 @@
-﻿using DeviationModule.Models.Interfaces;
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿//using DeviationModule.Models.Interfaces;
+//using System;
+//using System.ComponentModel;
+//using System.Runtime.CompilerServices;
 
-namespace DeviationModule.Models
-{
-    public class Deviation : INotifyPropertyChanged, IEntity
-    {
-        [ReadOnly(true)]
-        public int Id { get; set; }
+//namespace DeviationModule.Models
+//{
+//    public class Deviation : INotifyPropertyChanged, IEntity
+//    {
+//        [ReadOnly(true)]
+//        public int Id { get; set; }
 
-        [ReadOnly(true)]
-        public Procedure? Procedure { get; set; }
+//        [ReadOnly(true)]
+//        public Procedure? Procedure { get; set; }
 
-        [ReadOnly(true)]
-        public string? Owner { get; set; }
-        [ReadOnly(true)]
-        public string? Status { get; set; }
+//        [ReadOnly(true)]
+//        public string? Owner { get; set; }
+//        [ReadOnly(true)]
+//        public string? Status { get; set; }
 
-        public bool IsCorrected { get; set; }
-        private string? comment;
-        public string? Comment
-        {
-            get { return comment; }
-            set
-            {
-                comment = value;
-                OnPropertyChanged();
-            }
-        }
-        public string? BarCode { get; set; }
-        public DateTime? Date { get; set; }
+//        public bool IsCorrected { get; set; }
+//        private string? comment;
+//        public string? Comment
+//        {
+//            get { return comment; }
+//            set
+//            {
+//                comment = value;
+//                OnPropertyChanged();
+//            }
+//        }
+//        public string? BarCode { get; set; }
+//        public DateTime? Date { get; set; }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-    }
-}
+//        public event PropertyChangedEventHandler? PropertyChanged;
+//        public void OnPropertyChanged([CallerMemberName] string prop = "")
+//        {
+//            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+//        }
+//    }
+//}
